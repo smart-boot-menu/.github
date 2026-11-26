@@ -1,0 +1,29 @@
+name: RFC / Interface Change Proposal
+description: Propose an architectural decision or shared interface change
+labels: ["rfc", "architecture"]
+body:
+  - type: textarea
+    id: motivation
+    attributes:
+      label: Motivation & Problem Statement
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed Change
+      description: Include affected specs in `sbm`, types in `sbm-common`, and downstream repositories.
+    validations:
+      required: true
+  - type: textarea
+    id: security
+    attributes:
+      label: Security, Safety & Offline Impact
+    validations:
+      required: true
+  - type: textarea
+    id: compatibility
+    attributes:
+      label: Backward Compatibility & Versioning
+    validations:
+      required: true
