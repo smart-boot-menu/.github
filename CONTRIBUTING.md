@@ -18,6 +18,14 @@ Thank you for contributing to Smart Boot Menu!
 4. Ensure formatting, linting, and tests pass (`cargo fmt --check`, `cargo clippy --all-targets`, `cargo test`, plus `no_std` UEFI target checks where applicable).
 5. Submit a pull request referencing the relevant issue, specification, or ADR.
 
+## Versioning
+
+Smart Boot Menu uses the **0SFS versioning system**, derived directly from Git history at build time rather than hand-edited version fields:
+
+- **Commits**: `YY.MM.DD#N` — two-digit UTC year, month, and day of `HEAD`'s committer timestamp, followed by `#` and the 1-based commit count on that UTC date (for example, `26.11.27#12`).
+- **LTS releases**: tags named `YY.MM.DD-LTS` display as `YY.MM.DD LTS`.
+- Package manifests (`Cargo.toml`, `package.json`) keep valid SemVer placeholders where required by toolchains; UI and build metadata display the derived 0SFS version.
+
 ## Changing Shared Interfaces
 
 Breaking or additive changes to shared schemas, wire protocols, or data types MUST follow the interface change process:
