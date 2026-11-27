@@ -4,5 +4,5 @@ contact_links:
     url: https://github.com/smart-boot-menu/sbm/security/advisories/new
     about: Please report security vulnerabilities privately via GitHub Security Advisories.
   - name: Architecture & Specifications
-    url: https://github.com/smart-boot-menu/sbm
-    about: Read central architecture docs, specifications, and ADRs.
+    url: https://github.com/smart-boot-menu/docs
+    about: Read canonical specifications, ADRs (including ADR-010), threat models, and testing standards.

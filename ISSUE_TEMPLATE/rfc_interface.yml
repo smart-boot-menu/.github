@@ -1,5 +1,5 @@
 name: RFC / Interface Change Proposal
-description: Propose an architectural decision or shared interface change
+description: Propose an architectural decision, new component, or shared interface change
 labels: ["rfc", "architecture"]
 body:
   - type: textarea
@@ -9,16 +9,23 @@ body:
     validations:
       required: true
   - type: textarea
+    id: build_vs_reuse
+    attributes:
+      label: Build vs. Reuse Evaluation (ADR-010)
+      description: List the strongest existing open-source alternatives evaluated across languages/ecosystems (with licensing and maintenance status). Explain where the proposal sits in the ADR-010 order of preference (reuse -> compose -> thin wrapper -> upstream -> fork -> original implementation), total cost of ownership, and empirical baselines if claiming advantages.
+    validations:
+      required: true
+  - type: textarea
     id: proposal
     attributes:
       label: Proposed Change
-      description: Include affected specs in `sbm`, types in `sbm-common`, and downstream repositories.
+      description: Include affected specs/ADRs in `docs`, types in `sbm-common`, and downstream repositories.
     validations:
       required: true
   - type: textarea
     id: security
     attributes:
-      label: Security, Safety & Offline Impact
+      label: Security, Safety, Licensing & Offline Impact
     validations:
       required: true
   - type: textarea
