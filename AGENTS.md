@@ -1,6 +1,8 @@
-# Smart Boot Menu — Shared Agent Rules (`.github/AGENTS.md`)
+# Smart Boot Menu — Agent Entry Point (`.github/AGENTS.md`)
 
-Universal engineering rules for every autonomous agent and contributor across all 14 `smart-boot-menu` repositories (modeled on `0SFS/.github/AGENTS.md`). Each repository's local `AGENTS.md` extends these rules with repository-specific boundaries.
+Applies to every repository in the `smart-boot-menu` organization (modeled on `0SFS/.github/AGENTS.md`). Read this file, then follow only the task-relevant rows in the routing index below and the repository-specific guardrails in [`agent-reference.md`](agent-reference.md#5-repository-specific-rules--guardrails). Individual repositories keep only a minimal pointer `AGENTS.md` back to this file so all agent instructions live in one central place.
+
+> **Standalone / Single-Repo Agents:** If you were launched inside a single repository checkout and sibling directories (`../.github/`, `../docs/`, `../sbm/`) are not present locally, use the GitHub URLs linked here to read the required policy, ADRs, and contracts before proceeding.
 
 ## Open-Source Reuse & Engineering Principles (Canonical Policy)
 
@@ -30,6 +32,7 @@ Our objective is to advance the state of the art, not duplicate it. Write origin
 ## Essential Universal Rules
 
 - **Single Source of Truth:**
+  - Central agent instructions and operational checklists belong ONLY in [`.github`](https://github.com/smart-boot-menu/.github) (`AGENTS.md` + `agent-reference.md`). Do not expand per-repo `AGENTS.md` files into duplicated rulebooks.
   - Normative specifications, ADRs, threat models, diagrams, and testing standards belong ONLY in [`docs`](https://github.com/smart-boot-menu/docs) (`../docs/`).
   - Primary-source ecosystem research, hardware probe notes, and retained benchmark evidence belong ONLY in [`research`](https://github.com/smart-boot-menu/research) (`../research/`).
   - Shared Rust data types, wire protocols, JSON Schemas, and golden test vectors belong ONLY in [`sbm-common`](https://github.com/smart-boot-menu/sbm-common) (`../sbm-common/`).
@@ -39,15 +42,16 @@ Our objective is to advance the state of the art, not duplicate it. Write origin
 - **Security & Privacy:** Never commit credentials, private keys, tokens, BitLocker recovery keys, ECIDs, hardware serial numbers, or personal data. Never allow arbitrary remote code execution in `sbm-uefi`.
 - **Offline-First:** Every core local capability must work with zero internet access, zero account, and no `sbm-server`.
 - **Honest Engineering:** Clearly distinguish *Verified* capabilities from *Experimental / WIP* and *Unverified / Open Questions*. Never invent upstream release versions or publish unmeasured performance numbers.
-- **Git Hygiene:** Use `main` for default branches. Never force-push `main`. Never add AI author, committer, or co-author trailers. Keep unrelated work out of commits.
+- **Git Hygiene:** Use `main` for default branches. Never force-push `main`. Never add AI author, committer, or co-author trailers. Preserve existing uncommitted work and stage explicit paths only.
 - **Licensing:** All original SBM code and documentation are dual-licensed **`MIT OR Apache-2.0`**. Isolate GPL-2.0/3.0 CLI tools as separate subprocesses (`execve`, never shell interpolation) and do not statically link GPL/AGPL crates into permissive Rust crates.
 
 ## Task Routing Index
 
 | When the task touches… | Read / inspect |
 |---|---|
-| Open-source reuse & build-vs-reuse policy | [`ADR-010`](https://github.com/smart-boot-menu/docs/blob/main/architecture-decisions/ADR-010-open-source-reuse-and-engineering-principles.md) & [`agent-reference.md`](agent-reference.md#4-proportional-build-vs-reuse-evaluation) |
-| Repository ownership & boundaries | [`sbm/REPOSITORIES.md`](https://github.com/smart-boot-menu/sbm/blob/main/REPOSITORIES.md) (`../sbm/REPOSITORIES.md`) |
+| Setup, commands, local scope | The target repository's `README.md` + [`agent-reference.md` §5](agent-reference.md#5-repository-specific-rules--guardrails) |
+| Open-source reuse & build-vs-reuse policy | [`ADR-010`](https://github.com/smart-boot-menu/docs/blob/main/architecture-decisions/ADR-010-open-source-reuse-and-engineering-principles.md) & [`agent-reference.md` §4](agent-reference.md#4-proportional-build-vs-reuse-evaluation) |
+| Repository ownership & boundaries | [`sbm/REPOSITORIES.md`](https://github.com/smart-boot-menu/sbm/blob/main/REPOSITORIES.md) (`../sbm/REPOSITORIES.md`) & [`agent-reference.md` §5](agent-reference.md#5-repository-specific-rules--guardrails) |
 | Architecture overview & SBM 0.1 roadmap | [`sbm/ARCHITECTURE.md`](https://github.com/smart-boot-menu/sbm/blob/main/ARCHITECTURE.md) & [`sbm/ROADMAP.md`](https://github.com/smart-boot-menu/sbm/blob/main/ROADMAP.md) |
 | Technology choices & rationale (ADRs 001–010) | [`docs/architecture-decisions/`](https://github.com/smart-boot-menu/docs/tree/main/architecture-decisions) (`../docs/architecture-decisions/`) |
 | Wire protocols, schemas, or shared Rust types | [`docs/specifications/`](https://github.com/smart-boot-menu/docs/tree/main/specifications) & [`sbm-common`](https://github.com/smart-boot-menu/sbm-common) |
@@ -56,4 +60,7 @@ Our objective is to advance the state of the art, not duplicate it. Write origin
 | UEFI graphics, Linux Wayland/GParted, GPUs | [`research/hardware/gpu-and-graphics-acceleration.md`](https://github.com/smart-boot-menu/research/blob/main/hardware/gpu-and-graphics-acceleration.md) & `ADR-002` |
 | Minimal Linux `sbm-core` (`mkosi`, Fedora/Asahi) | [`research/architecture/minimal-linux-core-os.md`](https://github.com/smart-boot-menu/research/blob/main/architecture/minimal-linux-core-os.md) & `ADR-003` |
 | Benchmarks, QEMU tests, fault injection | [`docs/testing/benchmarks.md`](https://github.com/smart-boot-menu/docs/blob/main/testing/benchmarks.md) & `ADR-008` |
-| Changing a shared interface | [`agent-reference.md`](agent-reference.md) (Interface Change Protocol) |
+| Changing a shared interface | [`agent-reference.md` §1](agent-reference.md#1-shared-interface-change-protocol) |
+| Validation & recording benchmarks | [`agent-reference.md` §2–§3](agent-reference.md#2-standard-rust-validation-checklist) |
+
+Keep this file as the single organization entry point: essential universal rules plus a task index. Put detailed procedures and repository-specific guardrails in [`agent-reference.md`](agent-reference.md) or linked guides, and update the index when adding a workflow.

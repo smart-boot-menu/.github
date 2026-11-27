@@ -17,7 +17,7 @@
 
 ## Checklist
 
-- [ ] Read [`.github/AGENTS.md`](https://github.com/smart-boot-menu/.github/blob/main/AGENTS.md) and repository `AGENTS.md`, and respected repository boundaries.
+- [ ] Read [`.github/AGENTS.md`](https://github.com/smart-boot-menu/.github/blob/main/AGENTS.md) and [`.github/agent-reference.md`](https://github.com/smart-boot-menu/.github/blob/main/agent-reference.md) (§5 repository guardrails), and respected repository boundaries.
 - [ ] Proportional build-versus-reuse evaluation completed for any new component, major dependency, architectural change, or replacement (`ADR-010`).
 - [ ] No duplicated shared protocol/schema types (canonical source is `sbm-common`).
 - [ ] Formatting and lint checks pass (`cargo fmt --check`, `cargo clippy`, or repo-equivalent checks).
